@@ -18,7 +18,6 @@ public partial class new_script : Node
 		this.frameCountIncrement();
 
 		string currentFrame = "Current frame: " + getFrameCount();
-		Godot.GD.Print(currentFrame);
 
 		_label.Text = "Hello World!\n" + currentFrame;
 	}

@@ -3,7 +3,7 @@ using Godot;
 
 public partial class MySprite2d : Sprite2D
 {
-    private int _speed = 00;
+    private int _speed = 500;
     private float _angularSpeed = Mathf.Pi;
 
     public override void _Process(double delta)

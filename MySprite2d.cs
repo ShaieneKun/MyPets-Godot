@@ -8,7 +8,7 @@ public partial class MySprite2d : Sprite2D
 
     public override void _Process(double delta)
     {
-        // moveRotation(delta);
+        // playerAutoMovementRotation(delta);
         playerMovementTankControls(delta);
     }
 
@@ -16,7 +16,7 @@ public partial class MySprite2d : Sprite2D
     /// This function is part of the Godot tutorial
     /// </summary>
     /// <param name="delta">Delta given to the _Process method</param>
-    private void moveRotation(double delta)
+    private void playerAutoMovementRotation(double delta)
     {
         Rotation += _angularSpeed * (float)delta;
         Vector2 velocity = Vector2.Up.Rotated(Rotation) * _speed;
@@ -62,5 +62,11 @@ public partial class MySprite2d : Sprite2D
 
         Rotation += _angularSpeed * direction * (float)delta;
         Position += velocity * (float)delta;
+    }
+
+    private void OnButtonPressed()
+    {
+        GD.Print("Button Pressed!");
+        SetProcess(!IsProcessing());
     }
 }

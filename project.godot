@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="Teste 1"
-run/main_scene="res://IntroTutorial/node_2d_cena_1.tscn"
+run/main_scene="res://MyFirst2dGame/MyFirst2dGameScene1.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=720
+window/size/initial_position_type=2
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

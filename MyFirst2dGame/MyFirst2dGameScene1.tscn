@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://btym61bo5f80i"]
+
+[ext_resource type="Texture2D" uid="uid://bi0rjgm6kcvjy" path="res://MyFirst2dGame/art/playerGrey_up1.png" id="1_h4qvh"]
+[ext_resource type="Texture2D" uid="uid://j46aw21lrqf2" path="res://MyFirst2dGame/art/playerGrey_up2.png" id="2_oog6j"]
+[ext_resource type="Texture2D" uid="uid://dfd45yb1gedg1" path="res://MyFirst2dGame/art/playerGrey_walk1.png" id="3_6uibd"]
+[ext_resource type="Texture2D" uid="uid://dc5j1nx5qx82x" path="res://MyFirst2dGame/art/playerGrey_walk2.png" id="4_y7tso"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cv3sb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h4qvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oog6j")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6uibd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y7tso")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_cv3sb")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]

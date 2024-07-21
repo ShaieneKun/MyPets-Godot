@@ -4,13 +4,25 @@ using Godot;
 public partial class MySprite2d : Sprite2D
 {
     private int _speed = 500;
+    private int _health = 10;
+
     private float _angularSpeed = Mathf.Pi;
+
+    // _Ready and _Signal
+
+    public override void _Ready()
+    {
+        Timer timer = GetNode<Timer>("Timer");
+        timer.Timeout += OnTimerTimeout;
+    }
 
     public override void _Process(double delta)
     {
-        // playerAutoMovementRotation(delta);
-        playerMovementTankControls(delta);
+        playerAutoMovementRotation(delta);
+        // playerMovementTankControls(delta);
     }
+
+    // _Process functions
 
     /// <summary>
     /// This function is part of the Godot tutorial
@@ -64,9 +76,33 @@ public partial class MySprite2d : Sprite2D
         Position += velocity * (float)delta;
     }
 
+    // Signals Callbacks
+
     private void OnButtonPressed()
     {
         GD.Print("Button Pressed!");
         SetProcess(!IsProcessing());
     }
+
+    private void OnTimerTimeout()
+    {
+        Visible = !Visible;
+        TakeDamage(1);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        _health -= amount;
+
+        if (_health <= 9)
+        {
+            EmitSignal(SignalName.HealthDepleted);
+        }
+    }
+
+    // Signals
+
+    [Signal]
+    public delegate void HealthDepletedEventHandler();
+
 }

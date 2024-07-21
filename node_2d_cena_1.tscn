@@ -39,6 +39,9 @@ position = Vector2(-7, -130)
 texture = ExtResource("2_vengl")
 script = ExtResource("3_8cw5j")
 
+[node name="Timer" type="Timer" parent="PlayerSprite"]
+autostart = true
+
 [node name="Button" type="Button" parent="."]
 offset_left = -166.0
 offset_top = 205.0

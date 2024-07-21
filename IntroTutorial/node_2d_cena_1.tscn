@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://gpwlxamqi82"]
 
-[ext_resource type="Script" path="res://new_script.cs" id="1_j4wdk"]
+[ext_resource type="Script" path="res://IntroTutorial/new_script.cs" id="1_j4wdk"]
 [ext_resource type="Texture2D" uid="uid://pt6w2yifuy5p" path="res://icon.svg" id="2_vengl"]
-[ext_resource type="Script" path="res://MySprite2d.cs" id="3_8cw5j"]
+[ext_resource type="Script" path="res://IntroTutorial/MySprite2d.cs" id="3_8cw5j"]
 
 [sub_resource type="SystemFont" id="SystemFont_korlt"]
 font_names = PackedStringArray("JetBrains Mono")
@@ -16,16 +16,18 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_j4wdk")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Node2D/Camera2D"]
 offset_left = -1124.0
 offset_top = -878.0
 offset_right = 1409.0
 offset_bottom = 737.0
 color = Color(0.707967, 0.707967, 0.707967, 1)
 
-[node name="Label" type="Label" parent="Camera2D"]
+[node name="Label" type="Label" parent="Node2D/Camera2D"]
 offset_left = -238.0
 offset_top = -63.0
 offset_right = 235.0
@@ -34,19 +36,19 @@ text = "Hello World"
 label_settings = SubResource("LabelSettings_bu6jx")
 vertical_alignment = 1
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="Node2D"]
 position = Vector2(-7, -130)
 texture = ExtResource("2_vengl")
 script = ExtResource("3_8cw5j")
 
-[node name="Timer" type="Timer" parent="PlayerSprite"]
+[node name="Timer" type="Timer" parent="Node2D/PlayerSprite"]
 autostart = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Node2D"]
 offset_left = -166.0
 offset_top = 205.0
 offset_right = 159.0
 offset_bottom = 289.0
 text = "Toggle Motion"
 
-[connection signal="pressed" from="Button" to="PlayerSprite" method="OnButtonPressed"]
+[connection signal="pressed" from="Node2D/Button" to="Node2D/PlayerSprite" method="OnButtonPressed"]

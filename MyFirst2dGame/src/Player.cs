@@ -7,7 +7,7 @@ public partial class Player : Area2D
 	public delegate void HitEventHandler();
 
 	[Export]
-	public int Speed { get; set; } = 400; // How fast the player will move (pixels/sec).
+	public int Speed { get; set; } = 800; // How fast the player will move (pixels/sec).
 
 	public Vector2 ScreenSize; // Size of the game window.
 

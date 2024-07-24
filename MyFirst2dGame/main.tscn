@@ -16,6 +16,7 @@ MobScene = ExtResource("2_pckru")
 
 [node name="Player" parent="." instance=ExtResource("3_naaq3")]
 position = Vector2(112, 308)
+Speed = 400
 
 [node name="Timers" type="Node" parent="."]
 
@@ -39,7 +40,6 @@ curve = SubResource("Curve2D_n22m7")
 [node name="MobSpawnLocation" type="PathFollow2D" parent="Positions/MobPath"]
 
 [connection signal="Hit" from="Player" to="." method="GameOver"]
-[connection signal="timeout" from="Timers/MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="Timers/MobTimer" to="." method="OnMobTimerTimeout"]
 [connection signal="timeout" from="Timers/ScoreTimer" to="." method="OnScoreTimerTimeout"]
-[connection signal="timeout" from="Timers/StartTimer" to="." method="OnScoreTimerTimeout"]
+[connection signal="timeout" from="Timers/StartTimer" to="." method="OnStartTimerTimeout"]

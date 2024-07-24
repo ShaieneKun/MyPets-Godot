@@ -10,7 +10,6 @@ public partial class Main : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		NewGame();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,8 +19,8 @@ public partial class Main : Node
 
 	public void GameOver()
 	{
-		GetNode<Timer>("MobTimer").Stop();
-		GetNode<Timer>("ScoreTimer").Stop();
+		GetNode<Timer>("Timers/MobTimer").Stop();
+		GetNode<Timer>("Timers/ScoreTimer").Stop();
 	}
 
 	public void NewGame()
@@ -42,8 +41,8 @@ public partial class Main : Node
 
 	private void OnStartTimerTimeout()
 	{
-		GetNode<Timer>("MobTimer").Start();
-		GetNode<Timer>("ScoreTimer").Start();
+		GetNode<Timer>("Timers/MobTimer").Start();
+		GetNode<Timer>("Timers/ScoreTimer").Start();
 	}
 
 	private void OnMobTimerTimeout()

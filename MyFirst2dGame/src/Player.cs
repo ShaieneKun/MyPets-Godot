@@ -54,7 +54,7 @@ public partial class Player : Area2D
 
 		// Checking if character needs to be moved and starting stopping animation
 
-		AnimatedSprite2D animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		AnimatedSprite2D animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D2");
 
 		if (velocity.Length() > 0)
 		{
@@ -93,7 +93,7 @@ public partial class Player : Area2D
 	{
 		Position = position;
 		Show();
-		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+		GetNode<CollisionShape2D>("CollisionShape2D2").Disabled = false;
 	}
 
 	// Signals
@@ -102,6 +102,6 @@ public partial class Player : Area2D
 		Hide(); // Player disappears after being hit.
 		EmitSignal(SignalName.Hit);
 		// Must be deferred as we can't change physics properties on a physics callback.
-		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+		GetNode<CollisionShape2D>("CollisionShape2D2").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 	}
 }

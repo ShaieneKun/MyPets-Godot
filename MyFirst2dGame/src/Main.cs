@@ -21,6 +21,11 @@ public partial class Main : Node
 	{
 		GetNode<Timer>("Timers/MobTimer").Stop();
 		GetNode<Timer>("Timers/ScoreTimer").Stop();
+
+		GetNode<HUD>("HUD").ShowGameOver();
+		// Note that for calling Godot-provided methods with strings,
+		// we have to use the original Godot snake_case name.
+		GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
 	}
 
 	public void NewGame()
@@ -31,12 +36,18 @@ public partial class Main : Node
 		var startPosition = GetNode<Marker2D>("Positions/StartPosition");
 		player.Start(startPosition.Position);
 
+		var hud = GetNode<HUD>("HUD");
+		hud.UpdateScore(_score);
+		hud.ShowMessage("Get Ready!");
+
 		GetNode<Timer>("Timers/StartTimer").Start();
+
 	}
 
 	private void OnScoreTimerTimeout()
 	{
 		_score++;
+		GetNode<HUD>("HUD").UpdateScore(_score);
 	}
 
 	private void OnStartTimerTimeout()

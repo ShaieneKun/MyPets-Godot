@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddr0vkr48qcyi"]
+
+[ext_resource type="Script" path="res://MyPets/src/HUD.cs" id="1_akiw1"]
+[ext_resource type="FontFile" uid="uid://b2ntg23hr14x7" path="res://MyPets/fonts/Xolonium-Regular.ttf" id="1_yhue2"]
+
+[sub_resource type="Theme" id="Theme_ge8mc"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_j4j0y"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_lgg0l"]
+events = [SubResource("InputEventAction_j4j0y")]
+
+[sub_resource type="SystemFont" id="SystemFont_qwiax"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_tfqla"]
+font = SubResource("SystemFont_qwiax")
+font_size = 96
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_akiw1")
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_ge8mc")
+theme_override_fonts/font = ExtResource("1_yhue2")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_lgg0l")
+text = "Start"
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 320.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_yhue2")
+theme_override_font_sizes/font_size = 64
+text = "My Pets"
+label_settings = SubResource("LabelSettings_tfqla")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="StartButton" to="." method="OnStartButtonPressed"]
